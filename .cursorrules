@@ -1,0 +1,25 @@
+# .cursorrules — WeatherNow
+
+## Stack
+- Flutter (Dart) — Clean Architecture
+- State: Riverpod (flutter_riverpod)
+- Networking: Dio via DioClient
+- Local storage: shared_preferences / hive
+- Env: flutter_dotenv
+
+## Layer Rules
+- domain/ entities have NO fromJson/toJson and NO flutter imports
+- data/ models extend or map to domain entities
+- presentation/ only talks to domain via providers
+- All API calls go through lib/core/network/dio_client.dart
+
+## Code Style
+- snake_case files, PascalCase classes
+- Providers: AsyncNotifierProvider for async, NotifierProvider for sync
+- Exceptions: use typed classes from lib/core/errors/exceptions.dart
+- No hardcoded strings — use AppConstants
+
+## Never
+- Commit .env
+- Import flutter in domain/
+- Call HTTP directly from widgets
